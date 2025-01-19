@@ -16,8 +16,24 @@ This is an [Astro project](https://astro.build/). You'll see the following folde
 └── package.json
 ```
 
+## Getting Started
 
-## 🧞 Commands
+Run:
+```
+npm install
+npm run build
+npm run dev
+```
+
+## Deployments
+
+Files are statically generated and 'deployed' into the `docs` directory, which get served as GitHub pages.
+
+After making any changes, run: `npm run deploy` and commit the changes in the `docs` directory.
+
+A GitHub action on the repo will kick off and deploy the latest content.
+
+## 🧞 Dev Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -26,10 +42,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm install`             | Installs dependencies                            |
 | `npm run dev`             | Starts local dev server at `localhost:4321`      |
 | `npm run build`           | Build your production site to `./dist/`          |
+| `npm run clean`           | Remove all files in  `./dist/`                   |
 | `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run deploy`          | Deploy your build to `docs`                      |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
