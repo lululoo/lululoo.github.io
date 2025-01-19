@@ -6,9 +6,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "clean": "rimraf ./dist",
+    "deploy": "rimraf ./docs && astro build --outDir docs"
   },
   "dependencies": {
-    "astro": "^5.1.7"
+    "astro": "^5.1.7",
+    "rimraf": "^6.0.1"
   }
 }
