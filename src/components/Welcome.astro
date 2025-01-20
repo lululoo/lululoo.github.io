@@ -1,32 +1,25 @@
 ---
 import me from "../assets/me.jpg";
-import background from "../assets/background.svg";
-import background2 from "../assets/background2.svg";
-import Button from "./Button.astro";
+
+import Button from "./ColorfulButton.astro";
 import ServerStatus from "./ServerStatus.astro";
-// import animations from "../styles/animations.css";
+import ContactForm from "./ContactForm.astro";
 ---
 
 <div id="container">
-	<img class="background" src={background.src} alt="" fetchpriority="high" />
-	<img class="background" src={background2.src} alt="" fetchpriority="high" />
 	<main>
 		<section id="hero">
-			<img
-				src={me.src}
-				width="30%"
-				style="max-width: 500px;"
-				alt="Matt"
-			/>
+			<img src={me.src} alt="Matt" />
 			<h1>Welcome!</h1>
 			<p>
 				My name is Matt Choi and I am a working professional living in
 				San Diego. I am a software engineer and I have been working in
 				the industry for over 10 years.
 				<br /><br />
-				If you'd like to get in contact with me, feel free to reach out to
-				me through the links below.
+				Please use the following form to get in contact with me.
+				<br /><br />
 			</p>
+			<ContactForm />
 			<br />
 			<section id="links">
 				<Button
@@ -45,49 +38,23 @@ import ServerStatus from "./ServerStatus.astro";
 					text="GitHub"
 				/>
 			</section>
-			
+
 			<section id="footer">
 				<ServerStatus />
-			</footer>
+			</section>
 		</section>
 	</main>
 </div>
 
 <style>
-	.background {
-		position: fixed;
-		top: 0;
-		left: 0;
+	#container {
+		height: 100%;
 		width: 100%;
-		height: 100%;
-		z-index: -1;
-		filter: blur(100px);
-
-		animation: swirl 10s infinite linear, sparkle 4s infinite linear;
-	}
-	
-	@keyframes swirl {
-		from {
-			transform: rotate(0deg);			
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
-
-	@keyframes sparkle {
-		0% { opacity: 0.3; }
-		50% {opacity: 1; }
-		100% { opacity: 0.3; }
-	}
-
-
-	#container {		
-		height: 100%;
 	}
 
 	main {
 		height: 100%;
+		width: 100%;
 		display: flex;
 		justify-content: center;
 	}
@@ -98,16 +65,18 @@ import ServerStatus from "./ServerStatus.astro";
 		flex-direction: column;
 		justify-content: center;
 		padding: 16px;
+		max-width: 800px;
 	}
 
-	h1 {
-		font-size: 22px;
-		margin-top: 0.25em;
+	#hero img {
+		overflow-y: hidden;
+		object-fit: contain;
 	}
 
 	#links {
 		display: flex;
 		gap: 16px;
+		margin: 25px;
 	}
 
 	#footer {
@@ -116,74 +85,24 @@ import ServerStatus from "./ServerStatus.astro";
 		margin-top: auto; /* Push to bottom */
 	}
 
-	pre {
-		font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
-			Consolas, "DejaVu Sans Mono", monospace;
-		font-weight: normal;
-		background: linear-gradient(14deg, #d83333 0%, #f041ff 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		margin: 0;
-	}
-
-	h2 {
-		margin: 0 0 1em;
-		font-weight: normal;
-		color: #111827;
-		font-size: 20px;
-	}
-
 	p {
 		margin: 0;
-		max-width: 40%;
 	}
 
-	code {
-		display: inline-block;
-		background:
-			linear-gradient(66.77deg, #f3cddd 0%, #f5cee7 100%) padding-box,
-			linear-gradient(155deg, #d83333 0%, #f041ff 18%, #f5cee7 45%)
-				border-box;
-		border-radius: 8px;
-		border: 1px solid transparent;
-		padding: 6px 8px;
-	}
+	@media screen and (max-width: 480px) {
+		#hero {
+			padding-top: 10%;
+		}
 
-	@media screen and (max-height: 368px) {
-		#news {
-			display: none;
+		#hero img {
+			max-width: 300px;
+			
 		}
 	}
 
 	@media screen and (max-width: 768px) {
-		#container {
-			display: flex;
-			flex-direction: column;
-		}
-
 		#hero {
-			display: block;
 			padding-top: 10%;
-		}
-
-		#links {
-			flex-wrap: wrap;
-		}
-
-		#links a.button {
-			padding: 14px 18px;
-		}
-
-		#news {
-			right: 16px;
-			left: 16px;
-			bottom: 2.5rem;
-			max-width: 100%;
-		}
-
-		h1 {
-			line-height: 1.5;
 		}
 	}
 </style>
