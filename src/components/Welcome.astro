@@ -1,29 +1,52 @@
 ---
-import me from '../../public/me.jpg';
-import background from '../assets/background.svg';
-import Button from './Button.astro';
+import me from "../../public/me.jpg";
+import background from "../assets/background.svg";
+import Button from "./Button.astro";
+import ServerStatus from "./ServerStatus.astro";
+// import animations from "../styles/animations.css";
 ---
 
 <div id="container">
 	<img id="background" src={background.src} alt="" fetchpriority="high" />
 	<main>
 		<section id="hero">
-			<img src={me.src} width="30%" style="max-width: 500px;" alt="Picture of me" />
-			<h1>
-				Welcome!
-			</h1>
+			<img
+				src={me.src}
+				width="30%"
+				style="max-width: 500px;"
+				alt="Picture of me"
+			/>
+			<h1>Welcome!</h1>
 			<p>
-				My name is Matt Choi and I am a working professional living in San Diego.
-        		I am a software engineer and I have been working in the industry for over 10 years.
-				<br/><br/>
-				If you'd like to get in contact with me, feel free to reach out to me through the links below.
+				My name is Matt Choi and I am a working professional living in
+				San Diego. I am a software engineer and I have been working in
+				the industry for over 10 years.
+				<br /><br />
+				If you'd like to get in contact with me, feel free to reach out to
+				me through the links below.
 			</p>
-			<br>
+			<br />
 			<section id="links">
-				<Button href="mailto:digdug991@gmail.com" target="_blank" text="Email" />
-				<Button href="https://www.linkedin.com/in/matthewmchoi/" target="_blank" text="LinkedIn" />
-				<Button href="https://github.com/lululoo" target="_blank" text="GitHub" />
+				<Button
+					href="mailto:digdug991@gmail.com"
+					target="_blank"
+					text="Email"
+				/>
+				<Button
+					href="https://www.linkedin.com/in/matthewmchoi/"
+					target="_blank"
+					text="LinkedIn"
+				/>
+				<Button
+					href="https://github.com/lululoo"
+					target="_blank"
+					text="GitHub"
+				/>
 			</section>
+			
+			<section id="footer">
+				<ServerStatus />
+			</footer>
 		</section>
 	</main>
 </div>
@@ -37,11 +60,35 @@ import Button from './Button.astro';
 		height: 100%;
 		z-index: -1;
 		filter: blur(100px);
+
+		animation: swirl 10s infinite linear, sparkle 4s infinite linear;
+	}
+	
+	@keyframes swirl {
+		from {
+			transform: rotate(0deg);			
+		}
+		to {
+			transform: rotate(360deg);
+		}
 	}
 
+	@keyframes sparkle {
+		0% { opacity: 0.3; }
+		50% {opacity: 1; }
+		100% { opacity: 0.3; }
+	}
+
+
 	#container {
-		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+		font-family: Inter, Roboto, "Helvetica Neue", "Arial Nova",
+			"Nimbus Sans", Arial, sans-serif;
 		height: 100%;
+
+		color: #4b5563;
+		font-size: 16px;
+		line-height: 24px;
+		letter-spacing: -0.006em;
 	}
 
 	main {
@@ -50,12 +97,12 @@ import Button from './Button.astro';
 		justify-content: center;
 	}
 
-	#hero {		
+	#hero {
 		display: flex;
 		align-items: center;
 		flex-direction: column;
 		justify-content: center;
-		padding: 16px;		
+		padding: 16px;
 	}
 
 	h1 {
@@ -68,9 +115,15 @@ import Button from './Button.astro';
 		gap: 16px;
 	}
 
+	#footer {
+		flex-grow: 0;
+		flex-shrink: 0;
+		margin-top: auto; /* Push to bottom */
+	}
+
 	pre {
-		font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas,
-			'DejaVu Sans Mono', monospace;
+		font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
+			Consolas, "DejaVu Sans Mono", monospace;
 		font-weight: normal;
 		background: linear-gradient(14deg, #d83333 0%, #f041ff 100%);
 		-webkit-background-clip: text;
@@ -87,10 +140,6 @@ import Button from './Button.astro';
 	}
 
 	p {
-		color: #4b5563;
-		font-size: 16px;
-		line-height: 24px;
-		letter-spacing: -0.006em;
 		margin: 0;
 		max-width: 40%;
 	}
@@ -99,7 +148,8 @@ import Button from './Button.astro';
 		display: inline-block;
 		background:
 			linear-gradient(66.77deg, #f3cddd 0%, #f5cee7 100%) padding-box,
-			linear-gradient(155deg, #d83333 0%, #f041ff 18%, #f5cee7 45%) border-box;
+			linear-gradient(155deg, #d83333 0%, #f041ff 18%, #f5cee7 45%)
+				border-box;
 		border-radius: 8px;
 		border: 1px solid transparent;
 		padding: 6px 8px;

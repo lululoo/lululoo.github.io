@@ -1,0 +1,34 @@
+---
+---
+
+<div id='server-status'>
+    <div id="checking">Checking server status...</div>
+    <div id="server-up" style="display: none;">Server is up!</div>
+    <div id="server-down" style="display: none;">Server is down!</div>
+
+    <script>
+        fetch('https://mchoi.mooo.com/health')
+        .then(() => {
+            document.getElementById('checking').style.display = 'none';
+            document.getElementById('server-up').style.display = 'block';
+        })
+        .catch(() => {
+            document.getElementById('checking').style.display = 'none';
+            document.getElementById('server-down').style.display = 'block';
+        });
+    </script>
+</div>
+
+<style>
+    #checking {
+        color: #f6e05e;
+    }
+
+    #server-up {
+        color: #68d391;
+    }
+
+    #server-down {
+        color: #f56565;
+    }
+</style>
