@@ -1,13 +1,15 @@
 ---
-import me from "../../public/me.jpg";
+import me from "../assets/me.jpg";
 import background from "../assets/background.svg";
+import background2 from "../assets/background2.svg";
 import Button from "./Button.astro";
 import ServerStatus from "./ServerStatus.astro";
 // import animations from "../styles/animations.css";
 ---
 
 <div id="container">
-	<img id="background" src={background.src} alt="" fetchpriority="high" />
+	<img class="background" src={background.src} alt="" fetchpriority="high" />
+	<img class="background" src={background2.src} alt="" fetchpriority="high" />
 	<main>
 		<section id="hero">
 			<img
@@ -52,7 +54,7 @@ import ServerStatus from "./ServerStatus.astro";
 </div>
 
 <style>
-	#background {
+	.background {
 		position: fixed;
 		top: 0;
 		left: 0;
